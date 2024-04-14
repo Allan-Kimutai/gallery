@@ -7,7 +7,7 @@ pipeline {
     }
     
     stages {
-        stage('Setup') {
+        stage('Clone Code') {
             steps {
                 // Trigger the pipeline automatically on new changes
                 git branch: 'master', url: 'https://github.com/Allan-Kimutai/gallery.git'
