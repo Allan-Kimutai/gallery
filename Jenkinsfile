@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     tools {
-        // Define Node.js tool installation
+        // Define Node.js tool installation.
         nodejs 'NodeJS'
     }
     
