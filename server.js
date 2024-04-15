@@ -13,14 +13,27 @@ const app = express();
 
 // connecting the database
 
-const MONGODB_URI = process.env.MONGODB_URI || config.mongoURI[app.settings.env]
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true  },(err)=>{
-    if (err) {
-        console.log(err)
-    }else{
-        console.log(`Connected to Database: ${MONGODB_URI}`)
-    }
-});
+// const MONGODB_URI = process.env.MONGODB_URI || config.mongoURI[app.settings.env]
+// mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true  },(err)=>{
+//     if (err) {
+//         console.log(err)
+//     }else{
+//         console.log(`Connected to Database: ${MONGODB_URI}`)
+//     }
+// });
+//get mongodb_url from the _config.js file
+let mongodb_url = config.mongoURI.production;
+
+// console.log(mongodb_url);
+
+let dbName = "darkroom";
+mongoose.connect(
+  `${mongodb_url}${dbName}`,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err) => {
+    if (err) console.log(err);
+  }
+);
 
 // test if the database has connected successfully
 // let db = mongoose.connection;
@@ -47,9 +60,9 @@ app.use('/image', image);
 
 
  
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT,() =>{
-    console.log(`Server is listening at http://localhost:5000`)
+    console.log(`Server is listening at http://localhost:8000`)
 });
 
 
