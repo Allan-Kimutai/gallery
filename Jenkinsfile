@@ -27,7 +27,7 @@ pipeline {
         stage('Deploy to Render') {
             steps {
                 // Deploy to Render
-                sh 'node server &'
+                sh 'curl -X POST -d "" https://api.render.com/deploy/srv-codc2mol6cac73bh8pog?key=ypSaKJTo8Cw'
             }
         }
     }
